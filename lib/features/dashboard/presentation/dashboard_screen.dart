@@ -10,10 +10,13 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Furry'),
+        title: Image.asset('assets/images/header_logo.png', height: 32.0),
         actions: [
           IconButton(
-            icon: const Icon(Icons.shopping_cart),
+            icon: Icon(
+              Icons.shopping_cart,
+              color: Theme.of(context).primaryColor,
+            ),
             onPressed: () {
               //showSearch(context: context, delegate: SearchBarDelegate());
             },
