@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:furry_flutter/features/dashboard/presentation/star_rating_widget.dart';
-import 'package:furry_flutter/features/item_detail/item_detail_screen.dart';
+import 'package:go_router/go_router.dart';
 
 class StoreItem extends StatelessWidget {
   const StoreItem({super.key});
@@ -8,11 +8,7 @@ class StoreItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (BuildContext context) => const ItemDetailScreen(),
-        ),
-      ),
+      onTap: () => context.push('/item'),
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(color: Colors.grey),

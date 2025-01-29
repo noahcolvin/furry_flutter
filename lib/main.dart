@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:furry_flutter/features/dashboard/presentation/dashboard_screen.dart';
+import 'package:furry_flutter/features/item_detail/item_detail_screen.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 void main() {
@@ -10,13 +12,26 @@ void main() {
   );
 }
 
+final _router = GoRouter(
+  routes: [
+    GoRoute(
+      path: '/',
+      builder: (context, state) => DashboardScreen(),
+    ),
+    GoRoute(
+      path: '/item',
+      builder: (context, state) => ItemDetailScreen(),
+    ),
+  ],
+);
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -45,7 +60,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const DashboardScreen(),
+      routerConfig: _router,
     );
   }
 }
