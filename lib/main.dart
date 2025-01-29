@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:furry_flutter/features/dashboard/presentation/dashboard_screen.dart';
 import 'package:furry_flutter/features/item_detail/item_detail_screen.dart';
+import 'package:furry_flutter/features/my_friends/domain/my_friend.dart';
+import 'package:furry_flutter/features/my_friends/presentation/my_friend_detail_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -17,6 +19,10 @@ final _router = GoRouter(
     GoRoute(
       path: '/',
       builder: (context, state) => DashboardScreen(),
+    ),
+    GoRoute(
+      path: '/my-friend',
+      builder: (context, state) => MyFriendDetailScreen(friend: state.extra as MyFriend),
     ),
     GoRoute(
       path: '/item',
