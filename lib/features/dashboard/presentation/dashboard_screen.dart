@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:furry_flutter/features/dashboard/presentation/furry_friend_widget.dart';
 import 'package:furry_flutter/features/my_friends/presentation/my_friends_widget.dart';
-import 'package:furry_flutter/features/dashboard/presentation/store_item_widget.dart';
+import 'package:furry_flutter/features/store_items/presentation/my_favorite_items_widget.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -123,21 +123,7 @@ class DashboardScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
               ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  spacing: 8.0,
-                  children: [
-                    StoreItem(),
-                    StoreItem(),
-                    StoreItem(),
-                    StoreItem(),
-                    StoreItem(),
-                    StoreItem(),
-                    StoreItem(),
-                  ],
-                ),
-              ),
+              MyFavoriteItemsWidget(),
               ConstrainedBox(
                 constraints: const BoxConstraints(
                   minWidth: double.infinity,

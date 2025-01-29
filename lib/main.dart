@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:furry_flutter/features/dashboard/presentation/dashboard_screen.dart';
-import 'package:furry_flutter/features/item_detail/item_detail_screen.dart';
+import 'package:furry_flutter/features/store_items/domain/store_item.dart';
+import 'package:furry_flutter/features/store_items/store_item_detail_screen.dart';
 import 'package:furry_flutter/features/my_friends/domain/my_friend.dart';
 import 'package:furry_flutter/features/my_friends/presentation/my_friend_detail_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -26,7 +27,7 @@ final _router = GoRouter(
     ),
     GoRoute(
       path: '/item',
-      builder: (context, state) => ItemDetailScreen(),
+      builder: (context, state) => ItemDetailScreen(item: state.extra as StoreItem),
     ),
   ],
 );

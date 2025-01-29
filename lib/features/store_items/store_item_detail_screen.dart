@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:furry_flutter/features/dashboard/presentation/star_rating_widget.dart';
+import 'package:furry_flutter/features/store_items/domain/store_item.dart';
 
 class ItemDetailScreen extends StatelessWidget {
-  const ItemDetailScreen({super.key});
+  const ItemDetailScreen({super.key, required this.item});
+
+  final StoreItem item;
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +21,12 @@ class ItemDetailScreen extends StatelessWidget {
             spacing: 8.0,
             children: [
               Text(
-                'Good Boy Dog Food',
+                item.name,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
               ),
-              StarRatingWidget(starCount: 5, rating: 4.5),
+              StarRatingWidget(starCount: 5, rating: item.rating),
               Container(
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey),
@@ -32,17 +35,17 @@ class ItemDetailScreen extends StatelessWidget {
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
-                  child: Image.asset('assets/images/items/dog_food.jpg'),
+                  child: Image.network(item.image),
                 ),
               ),
               Text(
-                '\$59.99',
+                '\$${item.price}',
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
               ),
               Text(
-                'All natural dog food made with the finest chicken and vegetables.',
+                item.description,
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               FilledButton(
@@ -56,10 +59,8 @@ class ItemDetailScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
               ),
-              Text('\u2022 Made in the USA'),
-              Text('\u2022 Protein rich'),
-              Text('\u2022 Great taste!'),
-              ExpansionPanelList(
+              ...item.about.map((String about) => Text('\u2022 $about')),
+              /* ExpansionPanelList(
                 children: [
                   ExpansionPanel(
                     headerBuilder: (BuildContext context, bool isExpanded) {
@@ -81,7 +82,7 @@ class ItemDetailScreen extends StatelessWidget {
                     ),
                   )
                 ],
-              ),
+              ), */
             ],
           ),
         ),
