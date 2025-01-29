@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:furry_flutter/features/my_friends/domain/my_friend.dart';
 
-class MyFriend extends StatelessWidget {
-  const MyFriend({super.key});
+class MyFriendWidget extends StatelessWidget {
+  const MyFriendWidget({super.key, required this.myFriend});
+
+  final MyFriend myFriend;
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +21,10 @@ class MyFriend extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-              child: Image.asset(
-                'assets/images/myFriends/cat_friend.jpg',
+              child: Image.network(
+                myFriend.image,
                 fit: BoxFit.cover,
+                alignment: Alignment.topCenter,
                 height: 150.0,
                 width: double.infinity,
               ),
@@ -31,7 +35,7 @@ class MyFriend extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Penny',
+                    myFriend.name,
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),

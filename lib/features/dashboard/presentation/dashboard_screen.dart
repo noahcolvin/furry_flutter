@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:furry_flutter/features/dashboard/presentation/furry_friend_widget.dart';
-import 'package:furry_flutter/features/dashboard/presentation/my_friend_widget.dart';
+import 'package:furry_flutter/features/my_friends/presentation/my_friends_widget.dart';
 import 'package:furry_flutter/features/dashboard/presentation/store_item_widget.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -158,16 +158,7 @@ class DashboardScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
               ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  spacing: 8.0,
-                  children: [
-                    MyFriend(),
-                    MyFriend(),
-                  ],
-                ),
-              ),
+              MyFriendsWidget(),
             ],
           ),
         ),
