@@ -26,7 +26,19 @@ class StoreItemWidget extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-                child: Image.network(item.image),
+                child: Image.network(
+                  item.image,
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) {
+                      return child;
+                    } else {
+                      return SizedBox(
+                        height: 200.0,
+                        child: const Center(child: CircularProgressIndicator()),
+                      );
+                    }
+                  },
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -39,11 +51,14 @@ class StoreItemWidget extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                     ),
-                    Text(
-                      item.description,
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.bodySmall,
+                    SizedBox(
+                      height: 60,
+                      child: Text(
+                        item.description,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
                     ),
                     const SizedBox(height: 8.0),
                     Text(
