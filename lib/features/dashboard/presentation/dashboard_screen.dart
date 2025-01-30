@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:furry_flutter/features/dashboard/presentation/animal_types_widget.dart';
+import 'package:furry_flutter/features/dashboard/presentation/hero_ad.dart';
 import 'package:furry_flutter/features/my_friends/presentation/my_friends_widget.dart';
 import 'package:furry_flutter/features/store_items/presentation/my_favorite_items_widget.dart';
 
@@ -93,20 +94,7 @@ class DashboardScreen extends StatelessWidget {
                     ),
               ),
               MyFavoriteItemsWidget(),
-              ConstrainedBox(
-                constraints: const BoxConstraints(
-                  minWidth: double.infinity,
-                  minHeight: 150.0,
-                ),
-                child: Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.indigo),
-                    borderRadius: BorderRadius.circular(0),
-                    color: Colors.indigo.shade900,
-                  ),
-                  child: Text(''),
-                ),
-              ),
+              HeroAd(),
               Text(
                 'Your furry friends',
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
