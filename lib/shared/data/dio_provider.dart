@@ -8,8 +8,8 @@ part 'dio_provider.g.dart';
 Dio dio(Ref ref) {
   final options = BaseOptions(
     baseUrl: 'http://10.0.2.2:54321/functions/v1',
-    connectTimeout: Duration(seconds: 5),
-    receiveTimeout: Duration(seconds: 3),
+    connectTimeout: Duration(seconds: 10),
+    receiveTimeout: Duration(seconds: 30),
   );
   return Dio(options);
 }

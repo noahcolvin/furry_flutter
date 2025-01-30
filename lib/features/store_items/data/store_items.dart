@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:furry_flutter/features/store_items/domain/store_item_list.dart';
 import 'package:furry_flutter/shared/data/dio_provider.dart';
@@ -6,20 +8,35 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'store_items.g.dart';
 
-@riverpod
-Future<StoreItemList> fetchStoreItems(Ref ref) async {
-  final cancelToken = CancelToken();
-  ref.onDispose(() => cancelToken.cancel());
+class StoreItems {
+  final Dio dio;
+  final CancelToken cancelToken;
 
-  final dio = ref.read(dioProvider);
-  return storeItems(
-    cancelToken: cancelToken,
-    dio: dio,
-  );
+  StoreItems({required this.dio, required this.cancelToken});
+
+  Future<StoreItemList> getStoreItems({String? animal, String? product, String? search}) async {
+    final uri = Uri(
+      path: '/items',
+      queryParameters: {
+        'animal': animal,
+        'product': product,
+        'search': search,
+      },
+    );
+    try {
+      final response = await dio.getUri(
+        uri,
+        cancelToken: cancelToken,
+      );
+      return StoreItemList.fromJson(response.data);
+    } catch (e) {
+      log('Request cancelled');
+      return StoreItemList(items: []);
+    }
+  }
 }
 
-Future<StoreItemList> storeItems({CancelToken? cancelToken, required Dio dio}) async {
-  final uri = Uri(path: '/items');
-  final response = await dio.getUri(uri, cancelToken: cancelToken);
-  return StoreItemList.fromJson(response.data);
+@riverpod
+StoreItems storeItems(Ref ref, CancelToken cancelToken) {
+  return StoreItems(dio: ref.read(dioProvider), cancelToken: cancelToken);
 }
