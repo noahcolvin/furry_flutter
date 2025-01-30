@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:furry_flutter/features/dashboard/presentation/furry_friend_widget.dart';
+import 'package:furry_flutter/features/dashboard/presentation/animal_types_widget.dart';
 import 'package:furry_flutter/features/my_friends/presentation/my_friends_widget.dart';
 import 'package:furry_flutter/features/store_items/presentation/my_favorite_items_widget.dart';
 
@@ -85,38 +85,7 @@ class DashboardScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
               ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  spacing: 8.0,
-                  children: [
-                    FurryFriend(
-                      assetPath: 'assets/images/dog.png',
-                      name: 'Dog',
-                    ),
-                    FurryFriend(
-                      assetPath: 'assets/images/dog.png',
-                      name: 'Cat',
-                    ),
-                    FurryFriend(
-                      assetPath: 'assets/images/dog.png',
-                      name: 'Hamster',
-                    ),
-                    FurryFriend(
-                      assetPath: 'assets/images/dog.png',
-                      name: 'Snake',
-                    ),
-                    FurryFriend(
-                      assetPath: 'assets/images/dog.png',
-                      name: 'Ferret',
-                    ),
-                    FurryFriend(
-                      assetPath: 'assets/images/dog.png',
-                      name: 'Fish',
-                    ),
-                  ],
-                ),
-              ),
+              AnimalTypesWidget(),
               Text(
                 'Your favorites',
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(

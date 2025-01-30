@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:furry_flutter/features/my_friends/domain/my_friend_list.dart';
-import 'package:furry_flutter/shared/application/dio_provider.dart';
+import 'package:furry_flutter/shared/data/dio_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

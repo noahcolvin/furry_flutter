@@ -30,6 +30,26 @@ final _router = GoRouter(
       builder: (context, state) => ItemDetailScreen(item: state.extra as StoreItem),
     ),
   ],
+  errorBuilder: ((context, state) => Scaffold(
+        appBar: AppBar(
+          title: const Text('Not Available'),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'This feature is not yet available',
+                textAlign: TextAlign.center,
+              ),
+              TextButton(
+                onPressed: () => context.pop(),
+                child: const Text('Back'),
+              ),
+            ],
+          ),
+        ),
+      )),
 );
 
 class MyApp extends StatelessWidget {
