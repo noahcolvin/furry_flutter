@@ -3,6 +3,7 @@ import 'package:furry_flutter/features/dashboard/presentation/animal_types_widge
 import 'package:furry_flutter/features/dashboard/presentation/hero_ad.dart';
 import 'package:furry_flutter/features/my_friends/presentation/my_friends_widget.dart';
 import 'package:furry_flutter/features/store_items/presentation/my_favorite_items_widget.dart';
+import 'package:go_router/go_router.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -72,7 +73,7 @@ class DashboardScreen extends StatelessWidget {
                   spacing: 8.0,
                   children: [
                     OutlinedButton(child: Text('Today\'s Specials'), onPressed: () {}),
-                    OutlinedButton(child: Text('Pharmacy'), onPressed: () {}),
+                    OutlinedButton(child: Text('Shop'), onPressed: () => context.push('/store')),
                     OutlinedButton(child: Text('Grooming'), onPressed: () {}),
                     OutlinedButton(child: Text('Locations'), onPressed: () {}),
                     OutlinedButton(child: Text('Rescue'), onPressed: () {}),

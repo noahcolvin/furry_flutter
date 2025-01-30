@@ -60,29 +60,6 @@ class ItemDetailScreen extends StatelessWidget {
                     ),
               ),
               ...item.about.map((String about) => Text('\u2022 $about')),
-              /* ExpansionPanelList(
-                children: [
-                  ExpansionPanel(
-                    headerBuilder: (BuildContext context, bool isExpanded) {
-                      return ListTile(
-                        title: Text('Reviews'),
-                      );
-                    },
-                    body: Column(
-                      children: [
-                        ListTile(
-                          title: Text('Great product!'),
-                          subtitle: Text('5 stars'),
-                        ),
-                        ListTile(
-                          title: Text('My dog loves it!'),
-                          subtitle: Text('5 stars'),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ), */
             ],
           ),
         ),
