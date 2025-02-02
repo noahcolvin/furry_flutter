@@ -1,6 +1,3 @@
-import 'dart:developer';
-
-import 'package:dio/dio.dart';
 import 'package:furry_flutter/features/store_items/data/store_items.dart';
 import 'package:furry_flutter/features/store_items/domain/store_item_list.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -16,38 +13,36 @@ class StoreItemsController extends _$StoreItemsController {
 
   @override
   FutureOr<StoreItemList> build() async {
-    final cancelToken = CancelToken();
     key = Object();
-    storeItems = ref.read(storeItemsProvider(cancelToken));
+    storeItems = ref.watch(storeItemsProvider);
     ref.onDispose(() {
       key = null;
-      cancelToken.cancel();
     });
 
     return _loadItems();
   }
 
-  void changeAnimal(String value) async {
+  Future<void> changeAnimal(String value) async {
     if (value == 'All') {
       animalFilter = null;
     } else {
       animalFilter = value;
     }
 
-    _setState();
+    await _setState();
   }
 
-  void changeProduct(String value) async {
+  Future<void> changeProduct(String value) async {
     if (value == 'All') {
       productFilter = null;
     } else {
       productFilter = value;
     }
 
-    _setState();
+    await _setState();
   }
 
-  void search(String value) async {
+  Future<void> search(String value) async {
     state = const AsyncValue.loading();
     state = AsyncValue.data(await storeItems.getStoreItems(search: value));
   }
@@ -57,7 +52,7 @@ class StoreItemsController extends _$StoreItemsController {
     return await storeItems.getStoreItems(animal: animalFilter, product: productFilter);
   }
 
-  void _setState() async {
+  Future<void> _setState() async {
     // This handles a race condition where the user
     // navigates away while loading
     final key = this.key;

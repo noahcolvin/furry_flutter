@@ -37,6 +37,7 @@ class StoreItems {
 }
 
 @riverpod
-StoreItems storeItems(Ref ref, CancelToken cancelToken) {
+StoreItems storeItems(Ref ref) {
+  final cancelToken = CancelToken();
   return StoreItems(dio: ref.read(dioProvider), cancelToken: cancelToken);
 }
