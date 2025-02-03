@@ -20,7 +20,17 @@ class AnimalType extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             child: SizedBox(
               width: 100,
-              child: Image.asset('assets/images/animal-types/${name.toLowerCase()}.jpg'),
+              child: Image.asset(
+                'assets/images/animal-types/${name.toLowerCase()}.jpg',
+                errorBuilder: (context, error, stackTrace) => Container(
+                  width: 100,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(0),
+                    color: Colors.indigo.shade900,
+                  ),
+                ),
+              ),
             ),
           ),
           Text(name),
