@@ -184,7 +184,6 @@ void main() {
     ]);
     verifyNoMoreInteractions(listener);
 
-    //verify(() => storeItems.getStoreItems(animal: null, product: null, search: null)).called(3);
     verify(() => storeItems.getStoreItems(animal: null, product: null, search: 'mouse trap')).called(1);
   });
 }
