@@ -28,7 +28,7 @@ final _router = GoRouter(
     ),
     GoRoute(
       path: '/store',
-      builder: (context, state) => StoreItemsScreen(),
+      builder: (context, state) => StoreItemsScreen(animal: state.extra as String?),
     ),
     GoRoute(
       path: '/item',

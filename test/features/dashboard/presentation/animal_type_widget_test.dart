@@ -26,7 +26,7 @@ void main() {
               builder: (context, state) => const AnimalType(name: 'Bob'),
             ),
             GoRoute(
-              path: '/items',
+              path: '/store',
               builder: (context, state) => Text('Test ${state.extra}'),
             ),
           ],

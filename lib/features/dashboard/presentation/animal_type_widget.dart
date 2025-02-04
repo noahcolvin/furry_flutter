@@ -12,7 +12,7 @@ class AnimalType extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.push('/items', extra: name),
+      onTap: () => context.push('/store', extra: name),
       child: Column(
         spacing: 8.0,
         children: [

@@ -4,7 +4,9 @@ import 'package:furry_flutter/features/store_items/presentation/store_items_cont
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class StoreItemsScreen extends ConsumerStatefulWidget {
-  const StoreItemsScreen({super.key});
+  const StoreItemsScreen({super.key, this.animal});
+
+  final String? animal;
 
   @override
   ConsumerState<StoreItemsScreen> createState() => _StoreItemsScreenState();
@@ -16,6 +18,17 @@ class _StoreItemsScreenState extends ConsumerState<StoreItemsScreen> {
 
   final List<String> productList = ['All', 'Food', 'Toy'];
   String productDropdownValue = 'All';
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.animal != null) {
+      setState(() {
+        animalDropdownValue = widget.animal!;
+        Future(() => ref.read(storeItemsControllerProvider.notifier).changeAnimal(widget.animal!));
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
