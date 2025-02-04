@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:furry_flutter/features/dashboard/presentation/animal_types_widget.dart';
 import 'package:furry_flutter/features/dashboard/presentation/hero_ad.dart';
+import 'package:furry_flutter/features/dashboard/presentation/search_widget.dart';
 import 'package:furry_flutter/features/my_friends/presentation/my_friends_widget.dart';
 import 'package:furry_flutter/features/store_items/presentation/my_favorite_items_widget.dart';
 import 'package:go_router/go_router.dart';
@@ -32,35 +33,7 @@ class DashboardScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             spacing: 16.0,
             children: [
-              SearchAnchor(
-                builder: (BuildContext context, SearchController controller) {
-                  return SearchBar(
-                    controller: controller,
-                    padding: const WidgetStatePropertyAll<EdgeInsets>(EdgeInsets.symmetric(horizontal: 16.0)),
-                    onTap: () {
-                      controller.openView();
-                    },
-                    onChanged: (_) {
-                      controller.openView();
-                    },
-                    leading: const Icon(Icons.search),
-                  );
-                },
-                suggestionsBuilder: (BuildContext context, SearchController controller) {
-                  return List<ListTile>.generate(
-                    5,
-                    (int index) {
-                      final String item = 'item $index';
-                      return ListTile(
-                        title: Text(item),
-                        onTap: () {
-                          controller.closeView(item);
-                        },
-                      );
-                    },
-                  );
-                },
-              ),
+              SearchWidget(),
               Text(
                 'Welcome back!',
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
