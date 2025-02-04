@@ -3,8 +3,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:furry_flutter/features/my_friends/data/my_friends.dart';
 import 'package:furry_flutter/features/my_friends/domain/my_friend.dart';
 import 'package:furry_flutter/features/my_friends/domain/my_friend_list.dart';
-import 'package:furry_flutter/features/store_items/domain/store_item.dart';
-import 'package:furry_flutter/features/store_items/domain/store_item_list.dart';
 import 'package:furry_flutter/shared/data/dio_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mocktail/mocktail.dart';

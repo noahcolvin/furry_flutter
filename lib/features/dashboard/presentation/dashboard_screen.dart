@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:furry_flutter/features/cart/presentation/cart_icon.dart';
 import 'package:furry_flutter/features/dashboard/presentation/animal_types_widget.dart';
 import 'package:furry_flutter/features/dashboard/presentation/hero_ad.dart';
 import 'package:furry_flutter/features/dashboard/presentation/search_widget.dart';
@@ -15,15 +16,7 @@ class DashboardScreen extends StatelessWidget {
       appBar: AppBar(
         title: Image.asset('assets/images/header_logo.png', height: 32.0),
         actions: [
-          IconButton(
-            icon: Icon(
-              Icons.shopping_cart,
-              color: Theme.of(context).primaryColor,
-            ),
-            onPressed: () {
-              //showSearch(context: context, delegate: SearchBarDelegate());
-            },
-          ),
+          CartIcon(),
         ],
       ),
       body: SingleChildScrollView(

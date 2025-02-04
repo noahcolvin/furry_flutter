@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:furry_flutter/features/my_friends/domain/my_friend.dart';
 import 'package:go_router/go_router.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class MyFriendWidget extends StatelessWidget {
   const MyFriendWidget({super.key, required this.myFriend});
@@ -24,8 +26,9 @@ class MyFriendWidget extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-                child: Image.network(
-                  myFriend.image,
+                child: FadeInImage(
+                  placeholder: Image.memory(kTransparentImage).image,
+                  image: CachedNetworkImageProvider(myFriend.image),
                   fit: BoxFit.cover,
                   alignment: Alignment.topCenter,
                   height: 150.0,

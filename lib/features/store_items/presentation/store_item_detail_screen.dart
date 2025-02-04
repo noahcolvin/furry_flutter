@@ -1,17 +1,25 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:furry_flutter/features/cart/presentation/cart_controller.dart';
+import 'package:furry_flutter/features/cart/presentation/cart_icon.dart';
 import 'package:furry_flutter/features/dashboard/presentation/star_rating_widget.dart';
 import 'package:furry_flutter/features/store_items/domain/store_item.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:transparent_image/transparent_image.dart';
 
-class ItemDetailScreen extends StatelessWidget {
+class ItemDetailScreen extends ConsumerWidget {
   const ItemDetailScreen({super.key, required this.item});
 
   final StoreItem item;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Item Detail'),
+        actions: [
+          CartIcon(),
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -35,7 +43,10 @@ class ItemDetailScreen extends StatelessWidget {
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
-                  child: Image.network(item.image),
+                  child: FadeInImage(
+                    placeholder: Image.memory(kTransparentImage).image,
+                    image: CachedNetworkImageProvider(item.image),
+                  ),
                 ),
               ),
               Text(
@@ -49,7 +60,15 @@ class ItemDetailScreen extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
               FilledButton(
-                onPressed: () {},
+                onPressed: () {
+                  ref.read(cartControllerProvider.notifier).addCartItem(item);
+
+                  const snackBar = SnackBar(content: Text('Item added to cart'));
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(snackBar)
+                      .closed
+                      .then((value) => context.mounted ? ScaffoldMessenger.of(context).clearSnackBars() : null);
+                },
                 child: Text('Add to Cart'),
               ),
               const SizedBox(height: 8.0),

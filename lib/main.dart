@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:furry_flutter/features/cart/presentation/cart_screen.dart';
 import 'package:furry_flutter/features/dashboard/presentation/dashboard_screen.dart';
 import 'package:furry_flutter/features/store_items/domain/store_item.dart';
 import 'package:furry_flutter/features/store_items/presentation/store_item_detail_screen.dart';
@@ -33,6 +34,10 @@ final _router = GoRouter(
     GoRoute(
       path: '/item',
       builder: (context, state) => ItemDetailScreen(item: state.extra as StoreItem),
+    ),
+    GoRoute(
+      path: '/cart',
+      builder: (context, state) => CartScreen(),
     ),
   ],
   errorBuilder: ((context, state) => Scaffold(

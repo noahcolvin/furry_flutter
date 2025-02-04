@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:furry_flutter/features/cart/presentation/cart_icon.dart';
 import 'package:furry_flutter/features/store_items/presentation/store_item_widget.dart';
 import 'package:furry_flutter/features/store_items/presentation/store_items_controller.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -37,6 +38,9 @@ class _StoreItemsScreenState extends ConsumerState<StoreItemsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Store Items'),
+        actions: [
+          CartIcon(),
+        ],
       ),
       body: Column(
         children: [

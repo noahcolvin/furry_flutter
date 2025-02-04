@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:furry_flutter/features/dashboard/presentation/star_rating_widget.dart';
 import 'package:furry_flutter/features/store_items/domain/store_item.dart';
 import 'package:go_router/go_router.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class StoreItemWidget extends StatelessWidget {
   const StoreItemWidget({super.key, required this.item});
@@ -26,19 +28,16 @@ class StoreItemWidget extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-                child: Image.network(
-                  item.image,
-                  loadingBuilder: (context, child, loadingProgress) {
-                    if (loadingProgress == null) {
-                      return child;
-                    } else {
-                      return SizedBox(
-                        height: 200.0,
-                        child: const Center(child: CircularProgressIndicator()),
-                      );
-                    }
-                  },
-                ),
+                child: Stack(children: [
+                  SizedBox(
+                    height: 200.0,
+                    child: const Center(child: CircularProgressIndicator()),
+                  ),
+                  FadeInImage(
+                    placeholder: Image.memory(kTransparentImage).image,
+                    image: CachedNetworkImageProvider(item.image),
+                  ),
+                ]),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),

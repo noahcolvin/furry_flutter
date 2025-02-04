@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:furry_flutter/features/my_friends/domain/my_friend.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class MyFriendDetailScreen extends StatelessWidget {
   const MyFriendDetailScreen({super.key, required this.friend});
@@ -27,7 +29,10 @@ class MyFriendDetailScreen extends StatelessWidget {
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
-                  child: Image.network(friend.image),
+                  child: FadeInImage(
+                    placeholder: Image.memory(kTransparentImage).image,
+                    image: CachedNetworkImageProvider(friend.image),
+                  ),
                 ),
               ),
             ],
