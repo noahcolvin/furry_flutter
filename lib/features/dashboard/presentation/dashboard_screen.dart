@@ -38,12 +38,12 @@ class DashboardScreen extends StatelessWidget {
                 child: Row(
                   spacing: 8.0,
                   children: [
-                    OutlinedButton(child: Text('Today\'s Specials'), onPressed: () {}),
                     OutlinedButton(child: Text('Shop'), onPressed: () => context.push('/store')),
-                    OutlinedButton(child: Text('Grooming'), onPressed: () {}),
-                    OutlinedButton(child: Text('Locations'), onPressed: () {}),
-                    OutlinedButton(child: Text('Rescue'), onPressed: () {}),
-                    OutlinedButton(child: Text('Vet Finder'), onPressed: () {}),
+                    OutlinedButton(child: Text('Today\'s Specials'), onPressed: () => context.push('/specials')),
+                    OutlinedButton(child: Text('Grooming'), onPressed: () => context.push('/grooming')),
+                    OutlinedButton(child: Text('Locations'), onPressed: () => context.push('/locations')),
+                    OutlinedButton(child: Text('Rescue'), onPressed: () => context.push('/rescue')),
+                    OutlinedButton(child: Text('Vet Finder'), onPressed: () => context.push('/vet')),
                   ],
                 ),
               ),
