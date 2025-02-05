@@ -1,3 +1,4 @@
+import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:furry_flutter/features/cart/presentation/cart_icon.dart';
 import 'package:furry_flutter/features/store_items/presentation/store_item_widget.dart';
@@ -110,16 +111,16 @@ class _StoreItemsScreenState extends ConsumerState<StoreItemsScreen> {
           ),
           Expanded(
             child: switch (storeItems) {
-              AsyncData(:final value) => GridView.count(
-                  primary: false,
-                  padding: const EdgeInsets.all(20),
-                  childAspectRatio: (1 / 1.8),
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  crossAxisCount: 2,
-                  children: [
-                    ...value.items.map((item) => StoreItemWidget(item: item)),
-                  ],
+              AsyncData(:final value) => Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: DynamicHeightGridView(
+                      itemCount: value.items.length,
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      builder: (ctx, index) {
+                        return StoreItemWidget(item: value.items[index]);
+                      }),
                 ),
               AsyncError() => Center(child: const Text('Oops, something unexpected happened')),
               _ => Center(child: const CircularProgressIndicator()),
