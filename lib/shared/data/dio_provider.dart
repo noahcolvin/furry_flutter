@@ -7,7 +7,7 @@ part 'dio_provider.g.dart';
 @Riverpod(keepAlive: true)
 Dio dio(Ref ref) {
   final options = BaseOptions(
-    baseUrl: 'http://10.0.2.2:54321/functions/v1',
+    baseUrl: 'http://127.0.0.1:54321/functions/v1',
     connectTimeout: Duration(seconds: 10),
     receiveTimeout: Duration(seconds: 30),
   );
