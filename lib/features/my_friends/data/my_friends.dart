@@ -21,5 +21,7 @@ Future<MyFriendList> fetchMyFriends(Ref ref) async {
 Future<MyFriendList> myFriends({CancelToken? cancelToken, required Dio dio}) async {
   final uri = Uri(path: '/my-friends');
   final response = await dio.getUri(uri, cancelToken: cancelToken);
-  return MyFriendList.fromJson(response.data);
+  return MyFriendList.fromJson({
+    'friends': response.data,
+  });
 }

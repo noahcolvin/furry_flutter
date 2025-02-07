@@ -34,18 +34,16 @@ void main() {
 
     final dio = MockDio();
     when(() => dio.getUri(Uri(path: '/my-friends'), cancelToken: any(named: 'cancelToken')))
-        .thenAnswer((_) async => Response(data: {
-              "friends": [
-                {
-                  "name": 'friend1',
-                  "image": 'image1',
-                },
-                {
-                  "name": 'friend2',
-                  "image": 'image2',
-                }
-              ]
-            }, statusCode: 200, requestOptions: RequestOptions()));
+        .thenAnswer((_) async => Response(data: [
+              {
+                "name": 'friend1',
+                "image": 'image1',
+              },
+              {
+                "name": 'friend2',
+                "image": 'image2',
+              }
+            ], statusCode: 200, requestOptions: RequestOptions()));
 
     final container = makeProviderContainer(dio);
     final result = await container.read(fetchMyFriendsProvider.future);

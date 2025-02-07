@@ -21,5 +21,7 @@ Future<StoreItemList> fetchMyFavoriteItems(Ref ref) async {
 Future<StoreItemList> myFavoriteItems({CancelToken? cancelToken, required Dio dio}) async {
   final uri = Uri(path: '/my-favorite-items');
   final response = await dio.getUri(uri, cancelToken: cancelToken);
-  return StoreItemList.fromJson(response.data);
+  return StoreItemList.fromJson({
+    'items': response.data,
+  });
 }

@@ -28,7 +28,9 @@ class StoreItems {
         uri,
         cancelToken: cancelToken,
       );
-      return StoreItemList.fromJson(response.data);
+      return StoreItemList.fromJson({
+        'items': response.data,
+      });
     } catch (e) {
       log('Request cancelled');
       return StoreItemList(items: []);

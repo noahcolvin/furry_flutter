@@ -29,28 +29,26 @@ void main() {
 
     final dio = MockDio();
     when(() => dio.getUri(Uri(path: '/my-favorite-items'), cancelToken: any(named: 'cancelToken')))
-        .thenAnswer((_) async => Response(data: {
-              "items": [
-                {
-                  "id": '1',
-                  "name": 'item1',
-                  "price": 100,
-                  "description": 'description1',
-                  "image": 'image1',
-                  "rating": 4,
-                  "about": []
-                },
-                {
-                  "id": '2',
-                  "name": 'item2',
-                  "price": 200,
-                  "description": 'description2',
-                  "image": 'image2',
-                  "rating": 2.5,
-                  "about": []
-                }
-              ]
-            }, statusCode: 200, requestOptions: RequestOptions()));
+        .thenAnswer((_) async => Response(data: [
+              {
+                "id": '1',
+                "name": 'item1',
+                "price": 100,
+                "description": 'description1',
+                "image": 'image1',
+                "rating": 4,
+                "about": []
+              },
+              {
+                "id": '2',
+                "name": 'item2',
+                "price": 200,
+                "description": 'description2',
+                "image": 'image2',
+                "rating": 2.5,
+                "about": []
+              }
+            ], statusCode: 200, requestOptions: RequestOptions()));
     final container = makeProviderContainer(dio);
     final result = await container.read(fetchMyFavoriteItemsProvider.future);
     expect(result, expected);
