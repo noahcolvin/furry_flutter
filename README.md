@@ -1,4 +1,4 @@
-# Furry Backend - dotnet
+# Furry - Flutter
 This is a sample mobile app named `Furry`, a (very) basic pet store. This is not intended to be a complete application, but rather a starting point for a full application.
 
 Created using Flutter and Riverpod.
@@ -34,7 +34,11 @@ I created this project to demonstrate creating a simple mobile app in Flutter.
 This is just a starting point. I wanted to keep it simple and not include too many features. This is a good starting point for a full application.
 
 #### Where is the backend?
-This will be available shortly.
+There are two, currently:
+
+[Supabase/Node](https://github.com/noahcolvin/furry-backend)
+
+[.NET](https://github.com/noahcolvin/furry-backend-dotnet)
 
 #### Why is there no authentication?
 No need for the current app.
