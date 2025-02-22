@@ -57,3 +57,5 @@ app.*.map.json
 api-keys.dev.json
 api-keys.stg.json
 api-keys.prod.json
+
+android/app/.cxx/

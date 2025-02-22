@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'store_item.freezed.dart';
@@ -6,7 +8,7 @@ part 'store_item.g.dart';
 @freezed
 class StoreItem with _$StoreItem {
   factory StoreItem({
-    required String id,
+    required int id,
     required String name,
     required String image,
     required double price,

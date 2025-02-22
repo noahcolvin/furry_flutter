@@ -10,6 +10,19 @@ Created using Flutter and Riverpod.
 - Cart page
 - Item search
 
+## Screenshots
+#### Android
+![Dashboard](screenshots/Android/Dashboard.png)
+![Item Detail](screenshots/Android/ItemDetails.png)
+![Store](screenshots/Android/Store.png)
+![Cart](screenshots/Android/Cart.png)
+
+#### Android
+![Dashboard](screenshots/iOS/Dashboard.png)
+![Item Detail](screenshots/iOS/ItemDetails.png)
+![Store](screenshots/iOS/Store.png)
+![Cart](screenshots/iOS/Cart.png)
+
 ## How to run
 [Install Flutter](https://docs.flutter.dev/get-started/install) for your platform of choice.
 
@@ -30,15 +43,22 @@ flutter test
 #### What is the purpose of this project?
 I created this project to demonstrate creating a simple mobile app in Flutter.
 
+I made one in [Android](https://github.com/noahcolvin/furry-android) and [React Native](https://github.com/noahcolvin/furry-rn) too!
+
 #### Why isn't there much here?
 This is just a starting point. I wanted to keep it simple and not include too many features. This is a good starting point for a full application.
 
+#### This isn't very pretty
+Sure, but also I'm not a designer. Rest assured, I will not be taking any design jobs.
+
 #### Where is the backend?
-There are two, currently:
+There are a few, currently:
 
 [Supabase/Node](https://github.com/noahcolvin/furry-backend)
 
 [.NET](https://github.com/noahcolvin/furry-backend-dotnet)
+
+[Express/Node](https://github.com/noahcolvin/furry-backend-express)
 
 #### Why is there no authentication?
 No need for the current app.
